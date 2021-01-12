@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "CniProject"
+  "defaultProject": "CniProject",
+  "cli": {
+    "analytics": "0531bb40-ab07-4393-a682-133ddbff865b"
+  }
 }

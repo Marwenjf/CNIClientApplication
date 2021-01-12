@@ -4,6 +4,7 @@ import { AuthGuardService } from '../guards/auth-guard.service';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UsersComponent } from './users/users.component';
+import { DetailsUserComponent } from './details-user/details-user.component';
 
 const routes: Routes = [
   {path: '', component: UsersComponent, canActivate:[AuthGuardService] },
@@ -16,6 +17,9 @@ const routes: Routes = [
       },
       {
         path: '/edit/:mat', component: EditUserComponent
+      },
+      {
+        path: '/details/:mat', component: DetailsUserComponent
       }
     ],
   }

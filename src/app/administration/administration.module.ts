@@ -7,10 +7,11 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from '../guards/auth-guard.service';
+import { DetailsUserComponent } from './details-user/details-user.component';
 
 
 @NgModule({
-  declarations: [UsersComponent, EditUserComponent, AddUserComponent],
+  declarations: [UsersComponent, EditUserComponent, AddUserComponent, DetailsUserComponent],
   imports: [
     CommonModule,
     AdministrationRoutingModule,
