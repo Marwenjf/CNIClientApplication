@@ -1,0 +1,279 @@
+<div class="ml-lg-8" style="min-width: 950px;">
+  <div class="d-flex flex-column flex-grow-1">
+    <!--begin::Row-->
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="card card-custom">
+          <form [formGroup]="searchAgentForm" (ngSubmit)="onSubmit()" >
+          <div class="card-header flex-wrap py-2">
+            <div class="card-title mb-1">
+              <h3 class="card-label">{{ 'ReportingPage.headTitle' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-body pb-3 pt-3">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group mb-2">
+                    <label>{{ 'ReportingPage.labelInputYear' | translate }}
+                    <span class="text-danger">*</span></label>
+                    <input  class="form-control" type="text" formControlName="inputYear" placeholder="{{ 'ReportingPage.labelInputYear' | translate }}" name="inputYear"  id="inputYear" autocomplete="off">
+                  </div>
+
+                 <div class="form-group mb-2">
+                  <label for="inputType">{{ 'ReportingPage.labelInputType' | translate }}
+                  <span class="text-danger">*</span></label>
+                  <select formControlName="inputType" class="form-control" id="inputType"  >
+                    <option value='1' >1</option>
+                    <option value='2' >2</option>
+                    <option value='3' >3</option>
+                  </select>
+                </div>
+
+                <div class="form-group mb-2">
+                  <label for="inputCategory">{{ 'ReportingPage.labelInputCategory' | translate }}
+                  <span class="text-danger">*</span></label>
+                  <select formControlName="inputCategory" class="form-control" id="inputCategory">
+                    <option value="general">{{ 'ReportingPage.selectByGeneral' | translate }}</option>
+                    <option value="grade">{{ 'ReportingPage.selectByGrade' | translate }}</option>
+                    <option value="secteur">{{ 'ReportingPage.selectBySecteur' | translate }}</option>
+                    <option value="administratif">{{ 'ReportingPage.selectByAdministratif' | translate }}</option>
+                    <option value="payeur">{{ 'ReportingPage.selectByPayeur' | translate }}</option>
+                    <option value="institution">{{ 'ReportingPage.selectByInstitution' | translate }}</option>
+                    <option value="carriere">{{ 'ReportingPage.selectByCarriere' | translate }}</option>
+                  </select>
+                </div>
+
+                </div>
+                <div class="col-sm-12 col-md-6">
+
+                  <div class="form-group mb-2">
+                    <label>{{ 'ReportingPage.labelInputMonth' | translate }}
+                    <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="inputMonth" name="inputMonth" placeholder="{{ 'ReportingPage.labelInputMonth' | translate }}"  id="inputMonth" autocomplete="off">
+                  </div>
+
+                  <div class="form-group mb-2">
+                    <label for="inputCompany">{{ 'ReportingPage.labelInputCompany' | translate }}
+                    <span class="text-danger">*</span></label>
+                    <select formControlName="inputCompany" class="form-control" id="inputCompany">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+
+                </div>
+
+              </div>
+          </div>
+          <div class="card-footer">
+            <div class="col-sm-12 col-md-12 align-left">
+              <button type="submit" value="Submit" class="btn btn-primary md-btn mr-2">{{ 'ReportingPage.btnSearchLabel' | translate }}</button>
+            </div>
+          </div>
+        </form>
+        </div>
+
+      </div>
+
+    </div>
+    <!--end::Row-->
+
+    <!-- begin general row-->
+    <div class="row" id="GeneralBlock" *ngIf="this.selectedCategoryValue === 'general'">
+      <div class="col-xl-6">
+        <div class="card card-custom">
+          <div class="card-header flex-wrap py-5">
+            <div class="card-title">
+              <h3 class="card-label">{{ 'ReportingPage.RepartitionBySexeChart' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                <div class="col-xl-12 col-sm-12 col-md-12">
+                  <div id="SelectSexechart" style="width: 100%; height: 300px"></div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6">
+        <div class="card card-custom">
+          <div class="card-header flex-wrap py-5">
+            <div class="card-title">
+              <h3 class="card-label">{{ 'ReportingPage.RepartitionBySexe' | translate }}</h3>
+              <a class="btn-export" (click)="exportToExcel()">
+                <i class="fa fa-comment-alt"></i>
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                <div class="col-xl-12 col-sm-12 col-md-12">
+                  <table class="table table-bordered table-checkable" id="GeneralSelectTable">
+                    <thead>
+                      <tr>
+                        <th>{{ 'ReportingPage.AgentSexe' | translate }}</th>
+                        <th>{{ 'ReportingPage.AgentNumber' | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>الاناث</td>
+                        <td>35 (33.6%)</td>
+                      </tr>
+                      <tr>
+                        <td>الذكور</td>
+                        <td>69 (66.4%) </td>
+                      </tr>
+                      <tr class="total-row">
+                        <td>مجموع الاعوان</td>
+                        <td>104</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6">
+        <div class="card card-custom">
+          <div class="card-header flex-wrap py-5">
+            <div class="card-title">
+              <h3 class="card-label">{{ 'ReportingPage.RepartitionByAgeChart' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                <div class="col-xl-12 col-sm-12 col-md-12">
+                  <div id="SelectAgechart" style="width: 100%; height: 300px"></div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6">
+        <div class="card card-custom">
+          <div class="card-header flex-wrap py-5">
+            <div class="card-title">
+              <h3 class="card-label">{{ 'ReportingPage.RepartitionByAge' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                <div class="col-xl-12 col-sm-12 col-md-12">
+                  <table class="table table-bordered table-checkable">
+                    <thead>
+                      <tr>
+                        <th>{{ 'ReportingPage.AgentAge' | translate }}</th>
+                        <th>{{ 'ReportingPage.AgentNumber' | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>60</td>
+                        <td>12</td>
+                      </tr>
+                      <tr>
+                        <td>35</td>
+                        <td>5</td>
+                      </tr>
+                      <tr>
+                        <td> 41</td>
+                        <td>2 </td>
+                      </tr>
+                      <tr>
+                        <td> 38</td>
+                        <td>2 </td>
+                      </tr>
+                      <tr>
+                        <td> 52</td>
+                        <td>3 </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- end general row -->
+
+    <!-- begin grade row-->
+    <div class="row" id="GradeBlock" *ngIf="this.selectedCategoryValue === 'grade'">
+      <div class="col-xl-12">
+        <div class="card card-custom">
+          <div class="card-header flex-wrap py-5">
+            <div class="card-title">
+              <h3 class="card-label">{{ 'ReportingPage.RepartitionByGrade' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                <div class="col-xl-12 col-sm-12 col-md-12">
+                  <table class="table table-bordered table-checkable">
+                    <thead>
+                      <tr>
+                        <th>pgrd</th>
+                        <th>pcorps</th>
+                        <th>pcat</th>
+                        <th>phcorps</th>
+                        <th>total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>10</td>
+                        <td>cat 1</td>
+                        <td></td>
+                        <td>100</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>10</td>
+                        <td>cat 1</td>
+                        <td></td>
+                        <td>100</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>10</td>
+                        <td>cat 1</td>
+                        <td></td>
+                        <td>100</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>10</td>
+                        <td>cat 1</td>
+                        <td></td>
+                        <td>100</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>10</td>
+                        <td>cat 1</td>
+                        <td></td>
+                        <td>100</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end grade row -->
+  </div>
+</div>
+<!--end::List-->

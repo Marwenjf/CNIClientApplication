@@ -23,7 +23,7 @@ export class AccountService {
 
   public loginStatus = new BehaviorSubject<boolean>(this.checkLoginStatus());
   private UserName    = new BehaviorSubject<string>(JSON.parse(localStorage.getItem('username')!));
- // private UserRole    = new BehaviorSubject<string>(JSON.parse(localStorage.getItem('role')!));
+  public UserRole    = localStorage.getItem('role')!;
 
 // Login Method
 loginUser(username: string, password: string): Observable<User>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -10,20 +11,22 @@ import { AccountService } from '../services/account.service';
 })
 export class LoginComponent implements OnInit {
 
-  insertForm!: FormGroup;
+  loginForm!: FormGroup;
   Username!: FormControl;
   Password!: FormControl;
   returnUrl!: string;
   ErrorMessage!: string;
   invalidLogin!: boolean;
 
-  constructor(public loginservice: AccountService, private router: Router, private route: ActivatedRoute,
+  constructor(public loginservice: AccountService, private translate: TranslateService, private router: Router, private route: ActivatedRoute,
     private fb: FormBuilder
-    ) { }
+    ) {
+      translate.setDefaultLang('ar');
+    }
 
     onSubmit()
     {
-        let userlogin = this.insertForm.value;
+        let userlogin = this.loginForm.value;
 
         this.loginservice.loginUser(userlogin.Username, userlogin.Password).subscribe(result => {
 
@@ -35,7 +38,6 @@ export class LoginComponent implements OnInit {
         error =>
         {
             this.invalidLogin = true;
-
             this.ErrorMessage = error.error.loginError;
 
             console.log(this.ErrorMessage);
@@ -53,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 
          // Initialize FormGroup using FormBuilder
-        this.insertForm = this.fb.group({
+        this.loginForm = this.fb.group({
             Username : this.Username,
             Password : this.Password
 

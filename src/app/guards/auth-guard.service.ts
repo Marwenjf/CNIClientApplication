@@ -9,6 +9,7 @@ import { AccountService } from '../services/account.service';
 })
 export class AuthGuardService implements CanActivate {
 
+
   constructor(private account: AccountService, private router: Router ) { }
 
   canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>
@@ -29,7 +30,7 @@ export class AuthGuardService implements CanActivate {
             // if the user is already logged in
             // tslint:disable-next-line:align
             if( destination === '/administration') {
-              if (localStorage.getItem('role') === 'Admin')
+                 if (localStorage.getItem('role') === 'Admin')
                         {
                             return true;
                         }

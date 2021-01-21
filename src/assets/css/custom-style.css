@@ -1,0 +1,23 @@
+/* for datepicker */
+.datepicker .datepicker-months .table-condensed thead tr {
+  display: none !important;
+}
+.total-row {
+  background: #ccc;
+  font-weight: bold;
+}
+.align-left {
+  text-align: left;
+}
+.md-btn {
+  width: 25% !important;
+}
+.card.card-custom>.card-header .card-title .btn-export {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  padding-left: 20px;
+}
+.card.card-custom>.card-header .card-title .btn-export i {
+  color: #1374ec;
+}

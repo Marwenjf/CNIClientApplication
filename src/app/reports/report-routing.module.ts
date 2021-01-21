@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '../guards/auth-guard.service';
-import { FiltreComponent } from './filtre/filtre.component';
+import { RepartitionAgentReportingComponent } from './repartition-agent-reporting/repartition-agent-reporting.component';
 
 const routes: Routes = [
-{path: '', component: FiltreComponent, canActivate:[AuthGuardService] },
-{path: 'reports/filter', component : FiltreComponent, canActivate:[AuthGuardService] }
+{path: '', component: RepartitionAgentReportingComponent, canActivate:[AuthGuardService] },
+{path: 'reports/filter', component : RepartitionAgentReportingComponent, canActivate:[AuthGuardService] }
 ];
 
 @NgModule({
